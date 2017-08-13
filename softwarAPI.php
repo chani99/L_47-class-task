@@ -1,35 +1,34 @@
 <?php
-// include ('software.php');
-// include ('vendor.php');
+include ('software.php');
+include ('vendor.php');
 include ('connect.php');
-$buttonValue = ($_REQUEST['q']);
+$getvalue = ($_REQUEST['q']);
 $DB = new connect();
 $DB = $DB->getDB();
 
 
    
-       function insertData($DB, $software){
-           $software = new software();
-           $software = software->getSoftware();
-           
-          $DB_insert = $DB->prepare("INSERT INTO l47_software(name, V_id) VALUES(:name, :V_id)");
-            $DB_employee->execute(array(
-                "name"=>$this->software['name'],
-                "V_id"=>$this->software['V_id'],));
+switch ($getvalue) {
+        case 'all': 
+        return  innerJoin($DB);
+        break;
 
-                return true;
-                    }
-       }
+        case 'insert': 
+        $name = ($_REQUEST['Program-name']);
+        $software = new software($name);
+        break;
 
-if ($buttonValue == "all")  {
-    return  innerJoin($DB);
+        case 'select':
+         
+        $vendor = Vendor::getVendor($DB);
+        return $vendor;
+
+        break;
+
+
+
 }
-else if ($buttonValue == "insert")  {
-    
-    $name = ($_REQUEST['Program-name']);
-    $software = new software($name);
 
-)
 
 
 

@@ -4,7 +4,7 @@ class connect {
     private $my_Data_Base;
 
             private $host = '127.0.0.1';
-            private $db   = 'homework';
+            private $db   = 'northwind';
             private $user = 'root';
             private $pass = '';
             private $charset = 'utf8';

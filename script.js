@@ -36,16 +36,25 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
+                    if (type == 'select') {
+                        document.getElementById("select").innerHTML = this.responseText;
 
+                    } else {
                         document.getElementById("result").innerHTML = this.responseText;
+                    }
 
-            
+
                 }
             };
 
             // var param = "mainAJAX.php?q=" + type + "&id=" + document.getElementById("Wid").value + "&name=" + document.getElementById("Wmame").value + "&date=" + document.getElementById("startDate").value;
-            var param = "softwarAPI.php?q="+ type;
+            var param = "softwarAPI.php?q=" + type;
             xhttp.open("GET", param, true);
 
             xhttp.send();
+        }
+
+
+        function getVendor() {
+            sendAJAX('select');
         }

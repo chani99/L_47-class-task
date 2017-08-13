@@ -10,18 +10,18 @@
 
 </head>
 
-<body>
-        <div class="form-inline">
-            </br>
-            <input type=text name="Program-name" id="Wid" placeholder="insert a program" />
-            </br>
-            <div id="select"></div>
-            </br>
+<body onload="getVendor()">
+    <div class="form-inline">
+        </br>
+        <input type=text name="Program-name" id="Wid" placeholder="insert a program" />
+        </br>
+        <div id="select"></div>
+        </br>
 
 
-    <button name="submit" value="insert" onclick="sendAJAX('insert')" class="btn-primary">insert</button>
+        <button name="submit" value="insert" onclick="sendAJAX('insert')" class="btn-primary">insert</button>
 
-    <div id="result" class="jumbotron myform"></div>
+        <div id="result" class="jumbotron myform"></div>
     </div>
 
 
