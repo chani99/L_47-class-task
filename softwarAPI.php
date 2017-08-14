@@ -14,14 +14,18 @@ switch ($getvalue) {
         break;
 
         case 'insert': 
-        $name = ($_REQUEST['Program-name']);
-        $software = new software($name);
+        $name = ($_REQUEST['name']);
+        $V_id = ($_REQUEST['id']);
+
+        $software = new software($name, $V_id);
+        $software = $software->insert($name, $V_id, $DB);
+        if ($software) echo "added!";
+        else echo "error!";
         break;
 
         case 'select':
          
-        $vendor = Vendor::getVendor($DB);
-        return $vendor;
+        echo Vendor::getVendor($DB);
 
         break;
 
