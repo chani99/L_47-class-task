@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>mission-2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+
+
+</head>
+
+<body onload="getVendor()">
+    <div class="form-inline">
+        </br>
+        <input type=text id="name" placeholder="insert a street name" />
+        </br>
+        <select id="select">select a city</select>
+        </br>
+
+
+        <button name="submit" value="insert" onclick="sendAJAX('insert')" class="btn-primary">insert</button>
+
+        <div id="result" class="jumbotron myform"></div>
+    </div>
+
+
+
+</body>
+
+</html>
