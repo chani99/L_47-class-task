@@ -19,6 +19,15 @@ function sendAJAX(type) {
                     creaTable(data);
 
                     break;
+                case 'id':
+                    var check = this.responseText;
+                    if (check != 'true') {
+                        // $('#id_error').html("this id doesn't exsist!");
+                        document.getElementById("id_error").innerHTML = "this id doesn't exsist!";
+
+                    }
+                    break;
+
                 default:
                     document.getElementById("result").innerHTML = "error";
 
@@ -29,8 +38,16 @@ function sendAJAX(type) {
 
 
     }
-    var param = "../server/API.php?q=" + type + "&name=" + name + "&id=" + id;
+    var param =
+        "../server/API.php?" +
+        "q=" + type +
+        "&name=" + name +
+        "&id=" + id +
+        "&phone=" + phone +
+        "&product_id=" + product_id;
+
     xhttp.open("GET", param, true);
+    // xhttp.open("GET", "../server/API.php", true);
     xhttp.send();
 }
 
@@ -41,6 +58,8 @@ var leadsArray = [];
 var id;
 var name;
 var type;
+var phone;
+var product_id;
 
 // function constructor for leads
 function leads(id, lead_name, lead_phone, product_id) {
@@ -78,4 +97,19 @@ function creaTable(data) {
         }
     }
 
+}
+
+
+// function to send the id to the DB and check if it exsist
+function checkId() {
+    id = $("#id").val();
+    sendAJAX('id');
+}
+
+function getParam() {
+    id = $("#id").val();
+    name = $("#name").val();
+    phone = $("#phone").val();
+    product_id = $("#product_id").val();
+    sendAJAX('update');
 }

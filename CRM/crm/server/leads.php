@@ -1,13 +1,15 @@
 <?php
 
-require_once ('connection.php');
+include ('BLL.php');
 
 class leads  {
+
     private $id;
     private $lead_name;
     private $lead_phone;
     private $product_id;
 
+    public static $table_name = 'leads';
 
 
     function __construct ($lead_name,$lead_phone,$product_id) {
@@ -20,51 +22,39 @@ class leads  {
 
 
    public static function GetAllLeads() {
-       $DB = new connection();
-       $DB = $DB->getDB();
-       $leads_obj;
-
-        $leads =  $DB->prepare('SELECT * FROM leads');
-        $leads->execute();
-        $leadsCount = $leads->rowCount();
-        $i = 0;
-
-            echo "[";
-                    while ($row = $leads->fetch()) 
-            {
-                echo "{";
-
-                echo  '"id":';
-                echo $row["id"];
-                echo ",";
-
-                echo '"lead_name":';
-                echo '"';
-                echo $row['lead_name'];
-                echo '"';
-                echo ",";
-
-                echo '"lead_phone":';
-                echo $row['lead_phone'];
-                echo ",";
-                
-
-                echo '"product_id":';
-                echo $row['product_id'];
-
-
-                echo "}";
-                if ($leadsCount -1> $i)
-                    echo ",";
-                $i++;
-            }
-
-            echo "]";
+        $leads =  BusinessLogicLayer::SelectAllFromTable(self::$table_name);
+        echo json_encode($leads);
 
         }
 
-        
+
+    public static function CheckId($id){
+            $exists = BusinessLogicLayer::Check_if_id_exists(self::$table_name, $id);
+            if ($exists == true) {
+                echo 'true';
+            }
+            else {
+            echo 'false';
+            }
 
    }
 
+       public static function UpdateLead($id, $name, $phone, $product_id){
+           $column="lead_name, lead_phone, product_id";
+           $new_values = $name . ", " . $phone . ", " . $product_id;
+            $update = BusinessLogicLayer::updat_table(self::$table_name, $id, $column, $new_values);
+            if ($exists == true) {
+            echo 'Lead was updated successfully';
+            }
+            else {
+            echo 'error';
+            }
 
+
+
+
+
+}
+
+
+}

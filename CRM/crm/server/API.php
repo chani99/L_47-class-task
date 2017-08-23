@@ -7,9 +7,36 @@ include ('prospects.php');
 require_once ('connection.php');
 $getvalue = ($_REQUEST['q']);
 
-   
+//    $getvalue='select';
 switch ($getvalue) {
-        // case 'all': 
+    
+        case 'select':
+        echo leads::GetAllLeads();
+        break;
+
+        case 'id':
+        $id = ($_REQUEST['id']);
+        echo leads::CheckId($id);
+        break;
+
+        case 'update':
+        $id = ($_REQUEST['id']);
+        $name = ($_REQUEST['name']);
+        $phone = ($_REQUEST['phone']);
+        $product_id = ($_REQUEST['product_id']);
+        echo leads::UpdateLead($id, $name, $phone, $product_id);
+        break;
+
+
+
+
+}
+
+
+
+
+
+    // case 'all': 
         // return  street::innerJoin();
         // break;
 
@@ -22,22 +49,6 @@ switch ($getvalue) {
         // if ($addStreet) echo "added!";
         // else echo "error!";
         // break;
-
-        case 'select':
-         
-        echo leads::GetAllLeads();
-
-        break;
-
-
-
-}
-
-
-
-
-
-
    
        
 
