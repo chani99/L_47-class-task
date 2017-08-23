@@ -6,7 +6,7 @@ function sendAJAX(type) {
         if (this.readyState == 4 && this.status == 200) {
             // return the data to the client acording to the type that was selected
             switch (type) {
-                case 'all':
+                case 'select':
                     var data = JSON.parse(this.responseText);
                     for (let i = 0; i < data.length; i++) {
                         leadsArray.push(new leads(
@@ -79,24 +79,3 @@ function creaTable(data) {
     }
 
 }
-
-
-// for (var key in validation_messages) {
-//     // skip loop if the property is from prototype
-//     if (!validation_messages.hasOwnProperty(key)) continue;
-
-//     var obj = validation_messages[key];
-//     for (var prop in obj) {
-//         // skip loop if the property is from prototype
-//         if(!obj.hasOwnProperty(prop)) continue;
-
-//         // your code
-//         alert(prop + " = " + obj[prop]);
-//     }
-// }
-
-
-
-// function getVendor() {
-//     sendAJAX('select');
-// }
