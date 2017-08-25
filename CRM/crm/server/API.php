@@ -27,6 +27,21 @@ switch ($getvalue) {
         echo leads::UpdateLead($id, $name, $phone, $product_id);
         break;
 
+        case 'create':
+        $name = ($_REQUEST['name']);
+        $phone = ($_REQUEST['phone']);
+        $product_id = ($_REQUEST['product_id']);
+        echo leads::CreateLead($name, $phone, $product_id);
+        break;
+
+        case 'delete':
+        $id = ($_REQUEST['id']);
+        echo leads::DeleteLead($id);
+        break;
+
+
+
+
 
 
 

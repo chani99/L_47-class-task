@@ -39,22 +39,45 @@ class leads  {
 
    }
 
+
        public static function UpdateLead($id, $name, $phone, $product_id){
-           $column="lead_name, lead_phone, product_id";
-           $new_values = $name . ", " . $phone . ", " . $product_id;
-            $update = BusinessLogicLayer::updat_table(self::$table_name, $id, $column, $new_values);
-            if ($exists == true) {
+            $updateValues= "lead_name = '$name' , lead_phone =  $phone , product_id = $product_id";
+
+           $update = BusinessLogicLayer::update_table(self::$table_name, $id, $updateValues);
+            if ($update == true) {
             echo 'Lead was updated successfully';
             }
             else {
             echo 'error';
             }
+}
 
 
+public static function CreateLead($name, $phone, $product_id){
+            $column="lead_name, lead_phone, product_id";
+            $values=":lead_name, :lead_phone, :product_id";
+            $exicute = array(
+                "lead_name"=>$name,
+                "lead_phone"=>$phone,
+                "product_id"=>$product_id);
+
+            $update = BusinessLogicLayer::create_new_row(self::$table_name, $column, $values, $exicute);
 
 
 
 }
 
+public static function DeleteLead($id) {
+        $deleted =  BusinessLogicLayer::DeleteRow(self::$table_name, $id);
+            if ($deleted == true) {
+            echo "Lead $id was Deleted successfully";
+            }
+            else {
+            echo 'Error';
+            }
+
+
+
+}
 
 }

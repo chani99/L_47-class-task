@@ -24,20 +24,52 @@ function sendAJAX(type) {
                     if (check != 'true') {
                         // $('#id_error').html("this id doesn't exsist!");
                         document.getElementById("id_error").innerHTML = "this id doesn't exsist!";
+                        $("#hide").addClass("hide")
 
+
+                    } else {
+                        // document.getElementById("hide").style.display = "inline";
+                        $("#hide").removeClass("hide")
+
+                    }
+                    break;
+
+                case 'create':
+                    var check = this.responseText;
+                    if (check == 'true') {
+                        document.getElementById("result").innerHTML = "Lead was created";
+                    } else {
+                        document.getElementById("result").innerHTML = "error";
+                    }
+                    break;
+
+                case 'delete':
+                    var check = this.responseText;
+                    if (check == 'true') {
+                        document.getElementById("result").innerHTML = "Lead was deleted";
+                    } else {
+                        document.getElementById("result").innerHTML = "error";
                     }
                     break;
 
                 default:
                     document.getElementById("result").innerHTML = "error";
 
+
             }
+
+
+
+
 
 
         }
 
 
     }
+
+
+
     var param =
         "../server/API.php?" +
         "q=" + type +
@@ -102,14 +134,16 @@ function creaTable(data) {
 
 // function to send the id to the DB and check if it exsist
 function checkId() {
+    $("#id_error").html("");
     id = $("#id").val();
     sendAJAX('id');
 }
 
 function getParam() {
+    var buttonValue = $("#submit").val();
     id = $("#id").val();
     name = $("#name").val();
     phone = $("#phone").val();
     product_id = $("#product_id").val();
-    sendAJAX('update');
+    sendAJAX(buttonValue);
 }

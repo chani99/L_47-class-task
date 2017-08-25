@@ -8,7 +8,7 @@
         }
         
         button {
-            min-width: 150px;
+            min-width: 240px;
         }
         
         .myform {
@@ -36,4 +36,8 @@
         
         .error {
             color: red;
+        }
+        
+        .hide {
+            display: none;
         }

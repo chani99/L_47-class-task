@@ -11,22 +11,23 @@ class BusinessLogicLayer {
 
         $table =  $DB->prepare("SELECT * FROM `".$table_name."`");
         $table->execute();
-        $mytable = array();
+        // $mytable = array();
 
-        while ($row = $table->fetch()) {
-        $mytable[] = $row;
-        }
+        // while ($row = $table->fetch()) {
+        // $mytable[] = $row;
+        // }
 
-        return $mytable;
+        return $mytable = $table->fetchAll();
+;
 
     }
 
-
+// checks if a id exists on a id row in a DB and returns true or false
 static function Check_if_id_exists($table_name, $id) {
         $DB = new connection();
         $DB = $DB->getDB();
 
-        $table =  $DB->prepare("SELECT id FROM `".$table_name."` WHERE id='$id'");
+        $table =  $DB->prepare("SELECT id FROM ".$table_name." WHERE id='$id'");
         $table->execute();
 
             if( $table->rowCount() > 0){
@@ -35,6 +36,37 @@ static function Check_if_id_exists($table_name, $id) {
             return false;
             }
     }
+
+ // updates data in a table 
+static function update_table($table_name, $id, $updateValues) {
+        $DB = new connection();
+        $DB = $DB->getDB();
+        $update = $DB->prepare("UPDATE ".$table_name." SET ".$updateValues." WHERE id='$id'");
+        $update->execute();
+
+
+
 }
 
-?>
+
+static function create_new_row($table_name, $column, $values, $exicute) {
+        $DB = new connection();
+        $DB = $DB->getDB();
+
+        $Create = $DB->prepare("INSERT INTO ".$table_name."(".$column.") VALUES (".$values.")");
+        $Create->execute($exicute);
+
+
+
+}
+
+static function DeleteRow($table_name, $id) {
+        $DB = new connection();
+        $DB = $DB->getDB();
+
+        $delete =  $DB->prepare("DELETE FROM ".$table_name." WHERE id =". $id);
+        $delete->execute();
+
+}
+
+}

@@ -19,21 +19,25 @@
         <div id="id_error"></div>
         </br>
         </br>
-        <h4> Update values:</h4>
-        <label for="name">update Name:</label> </br>
-        <input type="text" id="name" placeholder="leads new name"> </br>
-        </br>
-        <label for="phone">update Phone:</label> </br>
-        <input type="text" id="phone" placeholder="leads new phone"> </br>
-        </br>
-        <label for="product id">update product id:</label> </br>
-        <input type="number" id="product_id" placeholder="new product id"> </br>
-        </br>
-        </br>
-        <button name="submit" value="update" onclick="getParam()" class="btn-primary btn">Update Leads</button>
-        </br>
-        </br>
+
+        <div class="hide" id="hide">
+            <h4> Update values:</h4>
+            <label for="name">update Name:</label> </br>
+            <input type="text" id="name" placeholder="leads new name"> </br>
+            </br>
+            <label for="phone">update Phone:</label> </br>
+            <input type="number" id="phone" placeholder="leads new phone"> </br>
+            </br>
+            <label for="product id">update product id:</label> </br>
+            <input type="number" id="product_id" placeholder="new product id"> </br>
+            </br>
+            </br>
+            <button name="submit" id="submit" value="update" onclick="getParam()" class="btn-primary btn">Update Leads</button>
+            </br>
+            </br>
+        </div>
         <table id="result" class="container"></table>
+
     </div>
 
 
