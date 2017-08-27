@@ -7,17 +7,9 @@ class BusinessLogicLayer {
 // selects all from a table in a DB and returns it as array
     static function SelectAllFromTable($table_name) {
         $DB = new connection();
-        $DB = $DB->getDB();
-
-        $table =  $DB->prepare("SELECT * FROM `".$table_name."`");
-        $table->execute();
-        // $mytable = array();
-
-        // while ($row = $table->fetch()) {
-        // $mytable[] = $row;
-        // }
-
-        return $mytable = $table->fetchAll();
+        $res = $DB->runQuery("SELECT * FROM `".$table_name."`");
+     
+        return $res;
 ;
 
     }
@@ -43,6 +35,7 @@ static function update_table($table_name, $id, $updateValues) {
         $DB = $DB->getDB();
         $update = $DB->prepare("UPDATE ".$table_name." SET ".$updateValues." WHERE id='$id'");
         $update->execute();
+        return $update;
 
 
 

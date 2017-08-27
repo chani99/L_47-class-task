@@ -28,5 +28,12 @@ function getDB() {
     return $my_Data_Base;
 }
 
+function runQuery($query) {
+      $DB = $DB->getDB();
+       $table =  ($query);
+        $table->execute();
+        return $mytable = $table->fetchAll();
+}
+
 
 }
